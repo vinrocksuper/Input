@@ -21,7 +21,7 @@ public class testfile {
         int guess = intValue(input.nextInt());
         while(guess != num)
         {
-            System.out.println("close, try again!");
+            System.out.println("Close, try again!");
             guess = intValue(input.nextInt());
         }
         if(guess == num)
