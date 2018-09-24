@@ -7,7 +7,7 @@ public class testfile {
         System.out.println("What's your name?");
         String name = input.nextLine();
         System.out.println("How old are you?");
-        String age = input.nextLine();
+        Integer age = input.nextInt();
         System.out.println("Hello, " + name + " who is " + age);
         input.close();
 
