@@ -6,7 +6,9 @@ public class testfile {
         Scanner input = new Scanner(System.in);
         System.out.println("What's your name?");
         String name = input.nextLine();
-        System.out.println("Hello, " + name);
+        System.out.println("How old are you?");
+        String age = input.nextLine();
+        System.out.println("Hello, " + name + " who is " + age);
         input.close();
 
     }
