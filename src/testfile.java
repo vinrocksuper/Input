@@ -23,7 +23,6 @@ public class testfile {
                 int num = intValue((Math.random() * 100 + 1));
                 int guess = intValue(input.nextInt());
                 int guessCount = 0;
-                System.out.println(Integer.toString(num));
                 while (guess != num)
                 {
                     if(guess < num)
