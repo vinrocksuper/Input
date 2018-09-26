@@ -15,7 +15,7 @@ public class testfile {
          **/
 
         try (Scanner input = new Scanner(System.in)) {
-            System.out.println("Type 1 to guess, type any other number to let the AI guess");
+            System.out.println("Type 1 to guess, type 2 to let the computer guess, type 3 to play hangman (2P)");
             int choice = intValue(input.nextInt());
             if (choice ==1)
             {
@@ -44,7 +44,7 @@ public class testfile {
                     System.out.print("Congrats! It took you " +guessCount + " guesses");
                 }
             }
-            else
+            if(choice == 2)
             {
                 System.out.println("Hello, I will be attempting to guess your number from 0-99");
                 System.out.println("If my guess is less than your number please type lower, if it is greater, type higher, and if correct, type correct");
@@ -97,6 +97,39 @@ public class testfile {
 
 
                 }
+            }
+            if(choice == 3)
+            {
+                System.out.println("Hello, This is a 2 player game. The first player designates the word to be guessed and the 2nd player guesses");
+                System.out.println("Player 1 type your word now.");
+                boolean chosen = false;
+                String tempLength = "";
+                String correctWord = "";
+                while(chosen == false)
+                {
+                    correctWord = input.next();
+                    System.out.println("Is your word " + correctWord + "? Type yes to continue. Type no and reenter a word");
+                    String confirm = input.next();
+                    if(confirm.equalsIgnoreCase("yes"))
+                    {
+                        chosen = true;
+                    }
+                    if (confirm.equalsIgnoreCase("no"))
+                    {
+                        correctWord = input.next();
+                        System.out.println("Is your word " + correctWord + "? Type yes to continue.Type no and reenter a word");
+                    }
+                }
+                for(int i = 0; i < 100; i++)
+                {
+                    System.out.println("\n");
+                }
+                for(int i =0;i<correctWord.length();i++)
+                {
+                    tempLength += "_ ";
+
+                }
+                System.out.println(tempLength);
             }
 
         }
