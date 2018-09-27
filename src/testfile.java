@@ -98,38 +98,72 @@ public class testfile {
 
                 }
             }
-            if(choice == 3)
-            {
+            if(choice == 3) {
                 System.out.println("Hello, This is a 2 player game. The first player designates the word to be guessed and the 2nd player guesses");
                 System.out.println("Player 1 type your word now.");
                 boolean chosen = false;
                 String tempLength = "";
                 String correctWord = "";
-                while(chosen == false)
-                {
+                String wrongLetters = "";
+
+                while (chosen == false) {
                     correctWord = input.next();
                     System.out.println("Is your word " + correctWord + "? Type yes to continue. Type no and reenter a word");
                     String confirm = input.next();
-                    if(confirm.equalsIgnoreCase("yes"))
-                    {
+                    if (confirm.equalsIgnoreCase("yes")) {
                         chosen = true;
                     }
-                    if (confirm.equalsIgnoreCase("no"))
-                    {
+                    if (confirm.equalsIgnoreCase("no")) {
                         correctWord = input.next();
                         System.out.println("Is your word " + correctWord + "? Type yes to continue.Type no and reenter a word");
                     }
                 }
-                for(int i = 0; i < 100; i++)
-                {
+                for (int i = 0; i < 100; i++) {
                     System.out.println("\n");
                 }
-                for(int i =0;i<correctWord.length();i++)
-                {
-                    tempLength += "_ ";
+                for (int i = 0; i < correctWord.length(); i++) {
+                    tempLength += "_";
 
                 }
                 System.out.println(tempLength);
+                System.out.println("It is " + correctWord.length() + " letters long");
+                System.out.println("Player 2, guess a letter");
+                String builtWord = tempLength;
+                int strikes = 0;
+                while(!builtWord.equals(correctWord))
+                {
+
+                    String guessLetter = input.next();
+                    try
+                    {
+                    if (correctWord.indexOf(guessLetter) > -1)
+                    {
+                        int index = correctWord.indexOf(guessLetter);
+                        String correctWordCopy = correctWord;
+
+
+                        int count = correctWordCopy.length() - correctWordCopy.replace(guessLetter, "").length();
+                        for(int i = 0; i < count ; i++)
+                        {
+
+                            builtWord = builtWord.substring(0,index) + guessLetter + builtWord.substring(index+1);
+                            index = correctWord.indexOf(guessLetter, index +1 );
+                        }
+                        System.out.println(builtWord);
+
+                    }
+                    if (correctWord.indexOf(guessLetter) == -1) {
+                        strikes++;
+                        System.out.println("Sorry but " + guessLetter + " isn't part of the word");
+                        wrongLetters += guessLetter + " ";
+                        System.out.println("Your current wrong guesses are " + wrongLetters);
+                    }
+                }
+                catch
+                    {
+
+                    }
+                System.out.println("congrats!");
             }
 
         }
